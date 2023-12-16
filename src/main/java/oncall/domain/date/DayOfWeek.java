@@ -18,10 +18,22 @@ public enum DayOfWeek {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public static DayOfWeek findByName(String name) {
         return Arrays.stream(values())
                 .filter(dayOfWeek -> name.equals(dayOfWeek.name))
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.INVALID_DAY_OF_WEEK.getMessage()));
+    }
+
+    public boolean isWeekend() {
+        return this == SATURDAY || this == SUNDAY;
+    }
+
+    public DayOfWeek next() {
+        return values()[(this.ordinal() + 1) % values().length];
     }
 }
