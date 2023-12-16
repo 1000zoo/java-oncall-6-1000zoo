@@ -1,6 +1,7 @@
 package oncall.domain.date;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Month {
@@ -21,8 +22,8 @@ public class Month {
         }
     }
 
-    public int getMonth() {
-        return month;
+    public List<Date> getDays() {
+        return Collections.unmodifiableList(days);
     }
 
     @Override

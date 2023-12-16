@@ -2,6 +2,7 @@ package oncall.domain;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import oncall.constants.ErrorMessage;
@@ -11,6 +12,10 @@ public class EmergencyWorkers {
 
     private EmergencyWorkers(List<Worker> workers) {
         this.workers = workers;
+    }
+
+    public LinkedList<Worker> getWorkerQueue() {
+        return new LinkedList<>(workers);
     }
 
     public static EmergencyWorkers from(List<String> names) {

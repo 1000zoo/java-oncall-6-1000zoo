@@ -1,5 +1,6 @@
 package oncall.domain;
 
+import java.util.LinkedList;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -31,5 +32,18 @@ class EmergencyWorkersTest {
                 () -> EmergencyWorkers.from(names)
         );
 
+    }
+
+    public static void main(String[] args) {
+        EmergencyWorkers workers = EmergencyWorkers.from(List.of("지우", "준빈", "민주", "승원", "준성"));
+        LinkedList<Worker> queue = workers.getWorkerQueue();
+
+        System.out.println(queue.remove(1));
+        System.out.println("!!!");
+
+        while (!queue.isEmpty()) {
+            System.out.println(queue.poll());
+        }
+        System.out.println(queue);
     }
 }
