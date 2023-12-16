@@ -9,4 +9,12 @@ public class Date {
         this.day = day;
         this.dayOfWeek = dayOfWeek;
     }
+
+    @Override
+    public String toString() {
+        return "Date{" +
+                "day=" + day +
+                ", dayOfWeek=" + dayOfWeek +
+                '}';
+    }
 }
