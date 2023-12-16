@@ -1,4 +1,4 @@
-package oncall.view;
+package oncall.view.output;
 
 public class Output {
 

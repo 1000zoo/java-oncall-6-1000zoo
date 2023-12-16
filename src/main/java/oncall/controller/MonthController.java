@@ -4,7 +4,7 @@ import oncall.constants.ErrorMessage;
 import oncall.constants.InstructionMessage;
 import oncall.domain.date.Month;
 import oncall.view.Input;
-import oncall.view.Output;
+import oncall.view.output.Output;
 
 public class MonthController {
 

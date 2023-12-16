@@ -1,8 +1,8 @@
 package oncall.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import oncall.domain.EmergencyWorkers;
 import oncall.domain.Worker;
 import oncall.domain.WorkerList;
 import oncall.domain.date.Date;
@@ -15,8 +15,8 @@ public class WorkScheduler {
     private final WorkerList workerList;
     private final Month month;
 
-    public WorkScheduler(EmergencyWorkers weekdayWorkers, EmergencyWorkers holidayWorkers, Month month) {
-        workerList = new WorkerList(weekdayWorkers, holidayWorkers);
+    public WorkScheduler(WorkerList workerList, Month month) {
+        this.workerList = workerList;
         this.month = month;
     }
 
@@ -34,9 +34,11 @@ public class WorkScheduler {
         return currentWorker;
     }
 
-    public void printCalendar() {
-        for (Date date : month.getDays()) {
-            System.out.println(date + ":" + calendar.get(date));
-        }
+    public String getWorkerNameAt(Date date) {
+        return calendar.get(date).name();
+    }
+
+    public List<Date> getDays() {
+        return month.getDays();
     }
 }

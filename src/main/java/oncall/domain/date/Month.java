@@ -22,6 +22,10 @@ public class Month {
         }
     }
 
+    public int getMonth() {
+        return month;
+    }
+
     public List<Date> getDays() {
         return Collections.unmodifiableList(days);
     }

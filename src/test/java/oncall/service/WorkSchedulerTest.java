@@ -3,6 +3,7 @@ package oncall.service;
 import java.util.Arrays;
 import java.util.List;
 import oncall.domain.EmergencyWorkers;
+import oncall.domain.WorkerList;
 import oncall.domain.date.Month;
 
 class WorkSchedulerTest {
@@ -21,8 +22,9 @@ class WorkSchedulerTest {
         System.out.println(wNameList);
         System.out.println(hNameList);
 
-        WorkScheduler scheduler = new WorkScheduler(weekday, holiday, new Month(4, "토"));
+        WorkerList workerList = new WorkerList(weekday, holiday);
+
+        WorkScheduler scheduler = new WorkScheduler(workerList, new Month(4, "토"));
         scheduler.schedule();
-        scheduler.printCalendar();
     }
 }
