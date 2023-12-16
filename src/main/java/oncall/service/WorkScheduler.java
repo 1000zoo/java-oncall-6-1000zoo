@@ -21,17 +21,22 @@ public class WorkScheduler {
     }
 
     public void schedule() {
-        Worker prevWorker = null;
+        Worker previousWorker = null;
 
         for (Date date : month.getDays()) {
-            prevWorker = process(date, prevWorker);
+            previousWorker = process(date, previousWorker);
         }
     }
 
     private Worker process(Date date, Worker prevWorker) {
-        if (prevWorker == null) {
+        Worker currentWorker = workerList.pickWorker(date, prevWorker);
+        calendar.put(date, currentWorker);
+        return currentWorker;
+    }
 
+    public void printCalendar() {
+        for (Date date : month.getDays()) {
+            System.out.println(date + ":" + calendar.get(date));
         }
-        return null;
     }
 }
