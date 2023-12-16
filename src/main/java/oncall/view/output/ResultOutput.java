@@ -7,26 +7,21 @@ public class ResultOutput {
     private final Output output = new Output();
 
     public void printResult(ScheduleResultDto scheduleResultDto) {
-        StringBuilder stringBuilder = new StringBuilder();
-        output.print(formatting(stringBuilder, scheduleResultDto));
+        output.print(formatting(scheduleResultDto));
     }
 
-    private String formatting(StringBuilder builder, ScheduleResultDto dto) {
-        return builder.append(formatting(dto.month(), dto.getDay(), dto.getDayOfWeek()))
-                .append(appendIfHoliday(dto))
-                .append(dto.workerName())
-                .toString();
+    private String formatting(ScheduleResultDto dto) {
+        return formatting(dto.month(), dto.getDay(), dto.isOnlyHoliday(), dto.getDayOfWeek(), dto.workerName());
     }
 
-    private String appendIfHoliday(ScheduleResultDto dto) {
-        if (dto.isOnlyHoliday()) {
-            return "(휴일) ";
+    private String formatting(int month, int day, boolean isOnlyHoliday, String dayOfWeek, String name) {
+        return String.format("%d월 %d일%s%s %s\n", month, day, appendIfHoliday(isOnlyHoliday), dayOfWeek, name);
+    }
+
+    private String appendIfHoliday(boolean isOnlyHoliday) {
+        if (isOnlyHoliday) {
+            return " (휴일) ";
         }
         return " ";
     }
-
-    private String formatting(int month, int day, String dayOfWeek) {
-        return String.format("%d 월 %d  %s", month, day, dayOfWeek);
-    }
-
 }

@@ -31,7 +31,9 @@ public class WorkerController {
     }
 
     private EmergencyWorkers readUntilValidInput(String message) {
-        List<String> splitList = Arrays.stream(message.split(",")).toList();
+        output.printInstruction(message);
+        String line = input.read();
+        List<String> splitList = Arrays.stream(line.split(",")).toList();
         return EmergencyWorkers.from(splitList);
     }
 
