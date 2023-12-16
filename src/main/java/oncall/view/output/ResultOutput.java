@@ -1,5 +1,6 @@
 package oncall.view.output;
 
+import oncall.constants.ResultFormat;
 import oncall.view.dto.ScheduleResultDto;
 
 public class ResultOutput {
@@ -15,13 +16,6 @@ public class ResultOutput {
     }
 
     private String formatting(int month, int day, boolean isOnlyHoliday, String dayOfWeek, String name) {
-        return String.format("%d월 %d일%s%s %s\n", month, day, appendIfHoliday(isOnlyHoliday), dayOfWeek, name);
-    }
-
-    private String appendIfHoliday(boolean isOnlyHoliday) {
-        if (isOnlyHoliday) {
-            return " (휴일) ";
-        }
-        return " ";
+        return ResultFormat.RESULT_FORMAT.formatting(month, day, isOnlyHoliday, dayOfWeek, name);
     }
 }
