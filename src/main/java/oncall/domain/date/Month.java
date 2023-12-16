@@ -14,8 +14,8 @@ public class Month {
     }
 
     private void createDays(int maximumDay, DayOfWeek dayOfWeek) {
-        for (int i = 1; i <= maximumDay; i++) {
-            Date date = new Date(i, dayOfWeek);
+        for (int day = 1; day <= maximumDay; day++) {
+            Date date = new Date(day, dayOfWeek, Holiday.isHoliday(month, day));
             days.add(date);
             dayOfWeek = dayOfWeek.next();
         }
@@ -27,9 +27,6 @@ public class Month {
 
     @Override
     public String toString() {
-        return "Month{" +
-                "month=" + month +
-                ", days=" + days +
-                '}';
+        return days.toString();
     }
 }
