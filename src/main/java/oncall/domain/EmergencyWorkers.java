@@ -34,8 +34,12 @@ public class EmergencyWorkers {
     }
 
     private static void validate(List<String> names) {
-        if (names.size() < 5 || names.size() > 35) {
+        if (names.size() > 35) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_WORKERS_INPUT.getMessage());
         }
+    }
+
+    public int size() {
+        return workers.size();
     }
 }

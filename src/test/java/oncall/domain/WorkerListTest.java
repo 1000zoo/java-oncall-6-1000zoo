@@ -1,5 +1,7 @@
 package oncall.domain;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.util.List;
 import oncall.domain.date.Date;
 import oncall.domain.date.DayOfWeek;
@@ -17,6 +19,19 @@ class WorkerListTest {
         EmergencyWorkers weekday = EmergencyWorkers.from(List.of("가나", "다라", "마바", "사아", "자차"));
         EmergencyWorkers holiday = EmergencyWorkers.from(List.of("가나", "다라", "마바", "사아", "지우"));
         workerList = new WorkerList(weekday, holiday);
+    }
+
+    @Test
+    @DisplayName("전체 인원이 5명이 안된다면 에러를 발생시켜야한다.")
+    void sizeValidationTest() {
+        List<String> weekdayNameList = List.of("지우", "가나");
+        List<String> holidayNameList = List.of("지우");
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new WorkerList(EmergencyWorkers.from(weekdayNameList), EmergencyWorkers.from(holidayNameList))
+        );
+
     }
 
     @Test
